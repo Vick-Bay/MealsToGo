@@ -27,7 +27,7 @@ export const RestaurantsScreen = ({ navigation }) => {
   const { isLoading, restaurants } = useContext(RestaurantsContext);
   const { favourites } = useContext(FavouritesContext);
   const [isToggled, setIsToggled] = useState(false);
-
+  console.log(restaurants)
   return (
     <SafeArea>
       {isLoading && (
