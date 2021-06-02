@@ -1,17 +1,13 @@
 import camelize from "camelize";
+import { host } from "../../utils/env";
 
 export const locationRequest = (searchTerm) => {
-  console.log(searchTerm)
-  return fetch(
-    `http://localhost:5001/mealstogo-d389d/us-central1/geocode?city=${searchTerm}`
-  ).then((res) => {
-    console.log(res.json());
+  return fetch(`${host}/geocode?city=${searchTerm}`).then((res) => {
     return res.json();
   });
 };
 
 export const locationTransform = (result) => {
-  console.log(result);
   const formattedResponse = camelize(result);
   const { geometry = {} } = formattedResponse.results[0];
   const { lat, lng } = geometry.location;
